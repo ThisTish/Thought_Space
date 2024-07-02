@@ -4,8 +4,8 @@
 //// setup server.js with express, app.use & get mongoose connection
 //// set up connection.js
 //todo make models for:
-	// *User
-	// *Thought
+	// //User
+	// //Thought
 		// todo Schemas
 			// *Reaction
 

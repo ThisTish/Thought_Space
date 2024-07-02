@@ -11,6 +11,6 @@ app.use(express.json())
 
 db.once('open', () =>{
 	app.listen(PORT, () =>{
-		console.log(`Welcome, http://${PORT} will be your server today!`.cyan)
+		console.log(`Welcome, http://localhost:${PORT} will be your server today!`.cyan)
 	})
 })

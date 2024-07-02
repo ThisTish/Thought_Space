@@ -3,11 +3,13 @@
 // !THEN my server is started and the Mongoose models are synced to the MongoDB database
 //// setup server.js with express, app.use & get mongoose connection
 //// set up connection.js
-//todo make models for:
+//// make models for:
 	// //User
 	// //Thought
-		// todo Schemas
-			// *Reaction
+		// // Schemas
+			// //Reaction
+
+// todo create seeds to start testing
 
 // !WHEN I open API GET routes in Insomnia for users and thoughts
 // !THEN the data for each of these routes is displayed in a formatted JSON

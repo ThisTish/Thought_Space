@@ -1,4 +1,7 @@
-const userNames = [
+const colors = require('colors')
+
+
+const usernames = [
 	'Django',
 	'CrookedColours',
 	'GlassAnimals',
@@ -184,7 +187,59 @@ const reactions = [
 // *psuedo code time...
 // todo 
 	// i need to put the username & emails in an object together. that will feed the userSchema
+		// combine together in an array. { username: "sidekick", email: "john.smith@example.com" }
+
 	// then, associate each user to each thought, in order, binding the username to the thought.
-	// then assign a reaction randomly to a thought, for each reaction=> bind to a random thought.
-		// each reaction must also be bound to a username. 
-			// username of thought cannot match username of reaction.
+		// just combine the array { thoughtText: 'Heat waves of nostalgia wash over me', username: 'GlassAnimals' }
+		// OR
+		const thoughtObjects = [{...thoughts, ...usernames}]
+		//*doesn't seem right and how to assign to certain keys
+
+
+
+const getRandom = (array) =>{
+		const i = Math.floor(Math.random()*50)
+		const property = array[i]
+		console.log(`${property} ${i} property and i data.js 203`.dim)
+		return property
+
+	}
+// to assign a user to a reaction
+const assignUsernames = (key, array) =>{
+	let assignedArray = []
+	let key = key
+	reactions.forEach(reaction =>{
+		const pairedObject = {
+			reaction,
+			key: getRandom(array)
+		}
+		assignedArray.push(pairedObject)
+
+		console.log(`data 218 assignedArray:${assignedArray}`.dim)
+	})
+	console.log(`reactions now have users`.bgBlue)
+	return assignedArray
+}
+
+assignUsernames("username", usernames)
+
+// first need to seed reactions. then get id then push id to reactions array in thoughts model
+const assignReactions = (reactions, thoughts) =>{
+	// not sure if i need to return, or if i need to adjust this to pass params, since calling else where. pretty sure i need to return
+	reactions.forEach(reaction =>{
+		let selectedThought = getRandom(thoughts)
+		let reactionId = reaction.reactionId
+		selectedThought.reactions.push(reactionId)
+		console.log(`data.js 233 reactionId ${reactionId}`.dim)
+	})
+	console.log(`Reactions have been given to some thoughts`.bgGreen)
+}
+
+assignReactions(reactions)
+
+			// username of thought cannot match username of reaction.--if we want to get technical. but i think it's ok for right now.
+		// if reaction.username !== thought.username{
+		// 	return, run again
+		// }
+
+module.exports = { assignUsernames, assignReactions }

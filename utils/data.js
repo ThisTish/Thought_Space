@@ -1,4 +1,5 @@
 const colors = require('colors')
+const { json } = require('express')
 
 
 const usernames = [
@@ -188,58 +189,68 @@ const reactions = [
 // todo 
 	// i need to put the username & emails in an object together. that will feed the userSchema
 		// combine together in an array. { username: "sidekick", email: "john.smith@example.com" }
+const usernamesWithEmail = (usernames, emails) =>{
+	const userEmailObjects = [{...usernames, ...emails}]
+	console.log(`usermeailobject ln 193 ${JSON.stringify(userEmailObjects)}`.dim)
+}
 
-	// then, associate each user to each thought, in order, binding the username to the thought.
-		// just combine the array { thoughtText: 'Heat waves of nostalgia wash over me', username: 'GlassAnimals' }
-		// OR
-		const thoughtObjects = [{...thoughts, ...usernames}]
-		//*doesn't seem right and how to assign to certain keys
 
+const assignUserTothought = (thoughts, usernames) => {
+	const thoughtObjects = [{...thoughts, ...usernames}]
+	console.log(`thoughtObject 195 data.js ${JSON.stringify(thoughtObjects)}`.dim)
+	}
 
 
 const getRandom = (array) =>{
-		const i = Math.floor(Math.random()*50)
+		const i = Math.floor(Math.random()*array.length)
 		const property = array[i]
 		console.log(`${property} ${i} property and i data.js 203`.dim)
 		return property
 
 	}
 // to assign a user to a reaction
-const assignUsernames = (key, array) =>{
+const assignUsernames = (array) =>{
 	let assignedArray = []
-	let key = key
 	reactions.forEach(reaction =>{
 		const pairedObject = {
 			reaction,
-			key: getRandom(array)
+			username: getRandom(array)
 		}
 		assignedArray.push(pairedObject)
 
-		console.log(`data 218 assignedArray:${assignedArray}`.dim)
+		console.log(`data 218 assignedArray:${JSON.stringify(assignedArray)}`.dim)
 	})
 	console.log(`reactions now have users`.bgBlue)
 	return assignedArray
 }
 
-assignUsernames("username", usernames)
 
-// first need to seed reactions. then get id then push id to reactions array in thoughts model
 const assignReactions = (reactions, thoughts) =>{
-	// not sure if i need to return, or if i need to adjust this to pass params, since calling else where. pretty sure i need to return
 	reactions.forEach(reaction =>{
 		let selectedThought = getRandom(thoughts)
-		let reactionId = reaction.reactionId
+		if(!selectedThought.reactions) selectedThought.reactions = []
+		let reactionId = reactions.reactionId
 		selectedThought.reactions.push(reactionId)
 		console.log(`data.js 233 reactionId ${reactionId}`.dim)
 	})
 	console.log(`Reactions have been given to some thoughts`.bgGreen)
 }
 
+// put into seeds
+assignUsernames(usernames)
+
 assignReactions(reactions)
 
-			// username of thought cannot match username of reaction.--if we want to get technical. but i think it's ok for right now.
+assignUserTothought(thoughts, usernames)// probably need capitalized
+
+usernamesWithEmail(usernames, emails)
+
+
+
+module.exports = { assignUsernames, assignReactions, assignUserTothought }
+
+
+// username of thought cannot match username of reaction.--if we want to get technical. but i think it's ok for right now.
 		// if reaction.username !== thought.username{
 		// 	return, run again
 		// }
-
-module.exports = { assignUsernames, assignReactions }

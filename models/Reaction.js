@@ -1,4 +1,4 @@
-const { Schema, Types} = require( 'mongoose')
+const { Schema, Types, model} = require( 'mongoose')
 
 const reactionSchema = new Schema(
 	{
@@ -9,6 +9,7 @@ const reactionSchema = new Schema(
 		reactionBody: {
 			type: String,
 			required: true,
+			default: ':)',
 			max: [ 280, 'Reactions must be under 280 characters']
 		},
 
@@ -34,4 +35,6 @@ const reactionSchema = new Schema(
 	}
 )
 
-module.exports = reactionSchema
+const Reaction = model('reaction', reactionSchema)
+
+module.exports = Reaction

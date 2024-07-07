@@ -3,7 +3,7 @@ const { json } = require('express')
 const Reaction = require('../models/index')
 
 
-const usernames = [
+const usernamesArray = [
 	'Django',
 	'CrookedColours',
 	'GlassAnimals',
@@ -56,7 +56,7 @@ const usernames = [
 	'WaxTailor'
 ]
 
-const emails =[
+const emailsArray =[
 'django.reinhardt@example.com',
 'phil.slabber@example.com',
 'dave.bayley@example.com',
@@ -109,7 +109,7 @@ const emails =[
 'david.best@example.com',
 ]
 
-const thoughts = [
+const thoughtsArray = [
 "I dream of floating on Nuages.",
 "Flowing through colors with Flow.",
 "Heat Waves of nostalgia wash over me.",
@@ -185,28 +185,36 @@ const reactionsArray = [
 		'🍃'
 ]
 
+// utility functions to return arrays for seeding
+
 const getRandom = (array) =>{
-	const i = Math.floor(Math.random()*array.length)
+	let i = Math.floor(Math.random()*array.length)
 	const property = array[i]
-	console.log(`${property} ${i} property and i data.js 203`.dim)
+	console.log(`${property} ${i} property and i data.js 193`.random)
 	return property
 }
 
 
-const usernamesWithEmail = (usernames, emails) =>{
-	const userEmailObjects = [{...usernames, ...emails}]
-	console.log(`usermeailobject ln 193 ${JSON.stringify(userEmailObjects)}`.dim)
+const usernamesWithEmail = () =>{
+	const userEmailObjects = usernamesArray.map((username, index) => ({
+		username,
+		email: emailsArray[index]
+		})	
+	)
+	console.log(`usermeailobject ln 204 ${JSON.stringify(userEmailObjects)}`.magenta)
+	return userEmailObjects
+	
 }
 
 
 const assignUserTothought = () => {
-	const thoughtObjects = thoughts.map((thought, index) => ({
+	const thoughtObjects = thoughtsArray.map((thought, index) => ({
 		thoughtText: thought,
-		username: usernames[index]
+		username: usernamesArray[index]
 		})	
 	)
 
-	console.log(`thoughtObject 209 data.js ${JSON.stringify(thoughtObjects)}`.dim)
+	console.log(`thoughtObject 217 data.js ${JSON.stringify(thoughtObjects)}`.cyan)
 	return thoughtObjects
 }
 
@@ -214,42 +222,42 @@ const assignUserTothought = () => {
 // to assign a user to a reaction
 const assignUsernames = () => {
 	let assignedArray = []
-	reactions.forEach(reaction =>{
+	reactionsArray.forEach(reaction =>{
 		const pairedObject = {
-			reaction,
-			username: getRandom(array)
+			reactionBody: reaction,
+			username: getRandom(usernamesArray)
 		}
 		assignedArray.push(pairedObject)
 
-		console.log(`data 218 assignedArray:${JSON.stringify(assignedArray)}`.dim)
 	})
+	console.log(`data 232 assignedArray:${JSON.stringify(assignedArray)}`.yellow)
 	console.log(`reactions now have users`.bgBlue)
 	return assignedArray
 }
 
-// ?const seedReactions stopped here.
 
-const assignReactions = async (reactions, thoughts) =>{
+// const assignReactions = () =>{
 
-	reactions.forEach(reaction =>{
-		let selectedThought = getRandom(thoughts)
-		let assignedReaction = {
-			reactionBody: reaction,
-			username: getRandom(users),
-			createdAt: new Date()
-		}
-		selectedThought.reactions.push(reactionId)
+// 	reactionsArray.forEach(reaction =>{
+// 		let selectedThought = getRandom(thoughtsArray)
+// 		console.log(`data.js 244 selectedthought ${selectedThought}`.dim)
+// 		let assignedReaction = {
+// 			reactionBody: reaction,
+// 			username: getRandom(usernamesArray),
+// 			createdAt: new Date()
+// 		}
+// 		let thoughtReactionArray = selectedThought.reactions
+// 		thoughtReactionArray.push(assignedReaction._id)
 
 
-		console.log(`data.js 233 reactionId ${reactionId}`.dim)
-	})
-	console.log(`Reactions have been given to some thoughts`.bgGreen)
-}
+// 	})
+// 	console.log(`Reactions have been given to some thoughts`.bgGreen)
+// }
 
 // assignReactions(reactions, thoughts)
 
 
-module.exports = { usernamesWithEmail, assignUsernames, assignReactions, assignUserTothought }
+module.exports = { usernamesWithEmail, assignUsernames, getRandom, assignUserTothought }
 
 
 // username of thought cannot match username of reaction.--if we want to get technical. but i think it's ok for right now.

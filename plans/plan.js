@@ -9,7 +9,7 @@
 		// // Schemas
 			// //Reaction
 
-// todo create seeds to start testing
+// // create seeds to start testing
 
 // !WHEN I open API GET routes in Insomnia for users and thoughts
 // !THEN the data for each of these routes is displayed in a formatted JSON

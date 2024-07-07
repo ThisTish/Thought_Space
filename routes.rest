@@ -1,7 +1,7 @@
 
 #* /API/USERS
 # get all users
-# todo
+# 
 GET http://localhost:3001/api/users
 ###
 
@@ -35,6 +35,21 @@ Content-Type: application/application/json
 # delete a user by id
 # todo
 DELETE  http://localhost:3001/api/users/:id
+###
+
+# */API/USERS/USERiD/FRIENDS/FRIENDiD
+# add a friend
+POST http://localhost/3001/api/users/:userId/friends/:friendId
+Content-Type: application/json
+
+{
+	"example": "exampleId",
+	"examplefriend": "exampleFriendId"
+}
+###
+
+# remove a friend
+DELETE http://localhost/3001/api/users/:userId/friends/:friendId
 ###
 
 

@@ -13,9 +13,6 @@ const thoughtSchema = new Schema(
 		createdAt:{
 			type: Date,
 			default: Date.now,
-			get: function(){
-				return this.createdAt.toLocaleString()
-			}
 		},
 
 		username: {
@@ -42,6 +39,10 @@ const thoughtSchema = new Schema(
 		}
 	}
 )
+
+thoughtSchema.path('createdAt').get(function(value){
+	return value.toLocaleString()
+})
 
 const Thought = model('thought', thoughtSchema)
 

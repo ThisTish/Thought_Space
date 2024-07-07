@@ -1,5 +1,6 @@
 const express = require('express')
 const colors = require('colors')
+const apiRoutes = require('./routes/index')
 
 const db = require('./config/connection')
 
@@ -8,6 +9,7 @@ const app = express()
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+app.use('/api', apiRoutes)
 
 db.once('open', () =>{
 	app.listen(PORT, () =>{

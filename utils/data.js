@@ -1,5 +1,7 @@
+// todo clean up console.log
+
+
 const colors = require('colors')
-const { json } = require('express')
 const Reaction = require('../models/index')
 
 
@@ -234,27 +236,6 @@ const assignUsernames = () => {
 	console.log(`reactions now have users`.bgBlue)
 	return assignedArray
 }
-
-
-// const assignReactions = () =>{
-
-// 	reactionsArray.forEach(reaction =>{
-// 		let selectedThought = getRandom(thoughtsArray)
-// 		console.log(`data.js 244 selectedthought ${selectedThought}`.dim)
-// 		let assignedReaction = {
-// 			reactionBody: reaction,
-// 			username: getRandom(usernamesArray),
-// 			createdAt: new Date()
-// 		}
-// 		let thoughtReactionArray = selectedThought.reactions
-// 		thoughtReactionArray.push(assignedReaction._id)
-
-
-// 	})
-// 	console.log(`Reactions have been given to some thoughts`.bgGreen)
-// }
-
-// assignReactions(reactions, thoughts)
 
 
 module.exports = { usernamesWithEmail, assignUsernames, getRandom, assignUserTothought }

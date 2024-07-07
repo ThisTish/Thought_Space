@@ -1,3 +1,5 @@
+// todo clean up console.log
+
 const connection = require('../config/connection')
 const { User, Thought, Reaction,} = require('../models/index')
 const { assignUsernames, getRandom, assignUserTothought, usernamesWithEmail } = require('./data')

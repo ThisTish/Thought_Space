@@ -15,20 +15,21 @@
 // !THEN the data for each of these routes is displayed in a formatted JSON
 // todo create routes for:
 	// *api/users
-		// todo Get all
-		// todo Get by id
-		// todo Post new user
+		// // Get all
+		// // Get by id
+		// // Post new user
 		// todo Put update user by _id
 		// todo Delete remove user by _id
 			// ?bonus: remove user's associated thoughts when deleted
 	// *api/users/:userId/friends/:friendId
+	// !finish post routes next!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		// todo Post to add a friend
 		// todo Delete to remove from friend's list
 	// *api/thoughts
-		// todo Get all thoughts
-		// todo Get thought by _id
-		// todo Post create new Thought
-			// ? push the created thought's _id to the associated user's "thoughts" array field
+		// // Get all thoughts
+		// // Get thought by _id
+		// // Post create new Thought
+			// // push the created thought's _id to the associated user's "thoughts" array field
 		// todo Put update thought by _id
 		// todo Delete to remove thought by _id
 	// *api/thoughts/:thoughtId/reactions

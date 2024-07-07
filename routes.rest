@@ -6,18 +6,16 @@ GET http://localhost:3001/api/users
 ###
 
 # get user by id
-# todo
-GET http://localhost:3001/api/users/:id
+GET http://localhost:3001/api/users/668a88517cfb0ee986ac45e0
 ###
 
 # add a new user
-# todo
 POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-	"username": "lernantino",
-	"email": "lernantino@gmail.com"
+	"username": "forgetit ",
+	"email": "shhhhh@gmail.com"
 }
 ###
 
@@ -39,6 +37,8 @@ DELETE  http://localhost:3001/api/users/:id
 
 # */API/USERS/USERiD/FRIENDS/FRIENDiD
 # add a friend
+#! stopped right here, doing post routes
+
 POST http://localhost/3001/api/users/:userId/friends/:friendId
 Content-Type: application/json
 
@@ -55,24 +55,20 @@ DELETE http://localhost/3001/api/users/:userId/friends/:friendId
 
 # */API/THOUGHTS
 # get all thoughts
-# todo
 GET http://localhost:3001/api/thoughts
 ###
 
 # geth thought by id
-# todo
-GET http://localhost:3001/api/thoughts:/id
+GET http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4614
 ###
 
-# create new thought(push the created thought's id to the asscociated user's 'thoughts'array field
-# todo
+# create new thought
 POST  http://localhost:3001/api/thoughts
 Content-Type: application/json
 
 {
-	"thoughtText": "Here's a cool thought...",
-	"username": "lernantino",
-	"userId": "5edff358a0fcb779aa7b118b"
+	"thoughtText": "shhhhh's ...",
+	"username": "tishthegoat"
 }
 
 ###
@@ -83,8 +79,8 @@ PUT http://localhost:3001/api/thoughts/:id
 Content-Type: application/json
 
 {
-	"thoughtText": "THIS is a thought",
-	"username": "need to figure out how to this won't change",
+	"thoughtText": "lk is a thought",
+	"username": "need to figure out how to this won't change-findbyidandupdate",
 	"userId": "need to figure out how to this won't change"
 	
 }
@@ -99,6 +95,7 @@ DELETE  http://localhost:3001/api/thoughts/:id
 # */API/THOUGHTS/:THOUGHTiD/REACTIONS
 # create a reaction stored in a single thought's 'reactions' array field
 # todo
+#! stopped right here, doing post routes
 POST http://localhost:/3001/api/thoughts/:thoughtId/reactions
 ### 
 

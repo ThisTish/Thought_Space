@@ -86,9 +86,15 @@ DELETE  http://localhost:3001/api/thoughts/:id
 
 # */API/THOUGHTS/:THOUGHTiD/REACTIONS
 # create a reaction stored in a single thought's 'reactions' array field
-# todo
-#! stopped right here, doing post routes
-POST http://localhost:/3001/api/thoughts/:thoughtId/reactions
+
+POST http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4617/reactions
+Content-Type: application/json
+
+{
+
+	"reactionBody": "cut the crap",
+	"userName": "GlassAnimals"
+}
 ### 
 
 # pull and remove a reaction by reactionId

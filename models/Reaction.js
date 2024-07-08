@@ -20,10 +20,8 @@ const reactionSchema = new Schema(
 
 		createdAt: {
 			type: Date,
-			default: Date.now,
-			get: function(){
-				return this.createdAt.toLocaleString()
-			}
+			default: Date.now
+			
 		}
 		
 	},
@@ -32,9 +30,13 @@ const reactionSchema = new Schema(
 			getters: true,
 		},
 		id: false
-	}
+	},
+
 )
+reactionSchema.path('createdAt').get(function(value){
+	return value.toLocaleString()
+})
 
-const Reaction = model('reaction', reactionSchema)
+// const Reaction = model('reaction', reactionSchema)
 
-module.exports = Reaction
+module.exports = reactionSchema

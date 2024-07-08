@@ -13,7 +13,6 @@ module.exports = {
 		}
 	},
 
-	
 	async getthoughtById(req, res) {
 		try {
 			const thought = await Thought.findOne({
@@ -52,6 +51,33 @@ module.exports = {
 				console.log('Successfully posted Thought'.yellow)
 				res.status(201).json({ newThought: newThought, thoughtOwner: thoughtOwner })
 			
+		} catch (error) {
+			console.log(`Error! - ${error}`.red)
+			res.status(500).json(error)
+		}
+	},
+
+	async addReaction (req, res){
+		const thoughtId = req.params.thoughtId
+		const reactionData = req.body
+
+		try{
+			if(!thoughtId) {
+				console.log('ThoughtId not found'.red)
+				res.status(400).json({message: 'thoughtId not found'})
+			}else{
+				const thought = await Thought.findByIdAndUpdate(
+					{_id: thoughtId},
+					{$addToSet: {reactions: reactionData }},
+					{ new: true })
+
+				if(!thought){
+					console.log('Thought not found'.red)
+				res.status(400).json({message: 'thought not found'})
+				}else{
+					res.status(201).json(thought)
+				}
+			}
 		} catch (error) {
 			console.log(`Error! - ${error}`.red)
 			res.status(500).json(error)

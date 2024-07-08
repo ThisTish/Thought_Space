@@ -14,8 +14,8 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-	"username": "forgetit ",
-	"email": "shhhhh@gmail.com"
+	"username": "overseer",
+	"email": "meteorology@gmail.com"
 }
 ###
 
@@ -25,8 +25,8 @@ PUT http://localhost:3001/api/user/:id
 Content-Type: application/application/json
 
 {
-	"username": "squirellZippers",
-	"email": "hell@gmail.com"
+	"username": "overseer",
+	"email": "meteorology@gmail.com"
 }
 ###
 
@@ -37,15 +37,7 @@ DELETE  http://localhost:3001/api/users/:id
 
 # */API/USERS/USERiD/FRIENDS/FRIENDiD
 # add a friend
-#! stopped right here, doing post routes
-
-POST http://localhost/3001/api/users/:userId/friends/:friendId
-Content-Type: application/json
-
-{
-	"example": "exampleId",
-	"examplefriend": "exampleFriendId"
-}
+POST http://localhost:3001/api/users/668a88517cfb0ee986ac45e2/friends/668a88517cfb0ee986ac45e9
 ###
 
 # remove a friend
@@ -105,8 +97,6 @@ DELETE HTTP/1.1 http://localhost:/3001/api/thoughts/:thoughtId/reactions
 ### 
 
 # ?
-# 2 get all
-# 2 get by id
-# 3 post
+# 1 post
 # 2 put
 # 3 delete

@@ -22,8 +22,7 @@
 		// todo Delete remove user by _id
 			// ?bonus: remove user's associated thoughts when deleted
 	// *api/users/:userId/friends/:friendId
-	// !finish post routes next!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		// todo Post to add a friend
+		// // Post to add a friend
 		// todo Delete to remove from friend's list
 	// *api/thoughts
 		// // Get all thoughts

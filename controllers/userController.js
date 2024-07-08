@@ -52,8 +52,30 @@ module.exports = {
 			console.log(`Error! - ${error}`.red)
 			res.status(500).json(error)
 		}
+	},
+	// POST http://localhost/3001/api/users/:userId/friends/:friendId
+
+	async addFriend (req, res){
+		const userId = req.params.userId
+		const friendId = req.params.friendId
+		try{
+			if(!userId || !friendId) {
+				console.log('user not found'.red)
+				res.status(400).json({message: 'user not found'})
+			}else{
+				const mainUser = await User.findByIdAndUpdate(
+					{ _id: userId },
+					{$addToSet: { friends: friendId }},
+					{new: true}
+			).populate('friends')
+				
+				res.status(201).json(mainUser)
+			}
+		} catch (error) {
+			console.log(`Error! - ${error}`.red)
+			res.status(500).json(error)
+		}
 	}
 
 
-	
 }

@@ -18,7 +18,7 @@
 		// // Get all
 		// // Get by id
 		// // Post new user
-		// todo Put update user by _id
+		// // Put update user by _id
 		// todo Delete remove user by _id
 			// ?bonus: remove user's associated thoughts when deleted
 	// *api/users/:userId/friends/:friendId
@@ -32,7 +32,7 @@
 		// todo Put update thought by _id
 		// todo Delete to remove thought by _id
 	// *api/thoughts/:thoughtId/reactions
-		// todo Post create reation stored in a single thought's "reactions" array field
+		// // Post create reation stored in a single thought's "reactions" array field
 		// todo Delete pull and remove a reaction by the reaction's _id
 
 // !WHEN I test API POST, PUT, and DELETE routes in Insomnia

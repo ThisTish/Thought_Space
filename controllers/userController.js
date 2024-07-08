@@ -53,7 +53,6 @@ module.exports = {
 			res.status(500).json(error)
 		}
 	},
-	// POST http://localhost/3001/api/users/:userId/friends/:friendId
 
 	async addFriend (req, res){
 		const userId = req.params.userId
@@ -71,6 +70,36 @@ module.exports = {
 				
 				res.status(201).json(mainUser)
 			}
+		} catch (error) {
+			console.log(`Error! - ${error}`.red)
+			res.status(500).json(error)
+		}
+	},
+
+	async updateUser(req, res){
+		const userId = req.params.id
+		let { username, email} = req.body
+		username = username.trim()
+		email = email.trim()
+
+		const userData = {
+			username,
+			email
+		}
+
+		try{
+			const user = await User.findByIdAndUpdate(
+				{ _id: userId},
+				{ $set: userData },
+				{ runValidators: true, new: true}
+			)
+
+			if(!user){
+				console.log('No user found')
+				res.status(404).json({message: 'User not found'})
+			}
+				
+				res.status(201).json(user)
 		} catch (error) {
 			console.log(`Error! - ${error}`.red)
 			res.status(500).json(error)

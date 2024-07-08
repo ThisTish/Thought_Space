@@ -3,7 +3,8 @@ const {
 	getAllUsers,
 	getUserById,
 	addUser, 
-	addFriend
+	addFriend,
+	updateUser
 } = require('../controllers/userController')
 
 router.route('/')
@@ -12,7 +13,7 @@ router.route('/')
 
 router.route('/:id')
 	.get(getUserById)
-	.put()
+	.put(updateUser)
 	.delete()
 
 router.route('/:userId/friends/:friendId')

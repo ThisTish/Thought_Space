@@ -20,13 +20,12 @@ Content-Type: application/json
 ###
 
 # update a user
-# todo
-PUT http://localhost:3001/api/user/:id
-Content-Type: application/application/json
+PUT http://localhost:3001/api/users/668a88517cfb0ee986ac45eb
+Content-Type: application/json
 
 {
-	"username": "overseer",
-	"email": "meteorology@gmail.com"
+	"username": "apparat",
+	"email": "arcadia@gmail.com"
 }
 ###
 
@@ -41,6 +40,7 @@ POST http://localhost:3001/api/users/668a88517cfb0ee986ac45e2/friends/668a88517c
 ###
 
 # remove a friend
+# todo
 DELETE http://localhost/3001/api/users/:userId/friends/:friendId
 ###
 
@@ -67,14 +67,11 @@ Content-Type: application/json
 
 # update a thought by id
 # todo
-PUT http://localhost:3001/api/thoughts/:id
+PUT http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4618
 Content-Type: application/json
 
 {
-	"thoughtText": "lk is a thought",
-	"username": "need to figure out how to this won't change-findbyidandupdate",
-	"userId": "need to figure out how to this won't change"
-	
+	"thoughtText": "lk is a thought"	
 }
 ###
 
@@ -86,7 +83,6 @@ DELETE  http://localhost:3001/api/thoughts/:id
 
 # */API/THOUGHTS/:THOUGHTiD/REACTIONS
 # create a reaction stored in a single thought's 'reactions' array field
-
 POST http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4617/reactions
 Content-Type: application/json
 

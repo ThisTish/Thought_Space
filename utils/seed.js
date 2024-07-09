@@ -1,8 +1,6 @@
-// todo clean up console.log
-
 const connection = require('../config/connection')
-const { User, Thought, Reaction,} = require('../models/index')
-const { assignUsernames, getRandom, assignUserTothought, usernamesWithEmail } = require('./data')
+const { User, Thought} = require('../models/index')
+const { assignUserTothought, usernamesWithEmail } = require('./data')
 const colors = require('colors')
 
 connection.once('error', (error) => console.log(`${error}`.red))
@@ -24,7 +22,7 @@ const userEmailSeed = async () =>{
 	try {
 		const users = usernamesWithEmail()
 		const createdUsers = await User.insertMany(users)
-		console.log(`userEmailSeed`.bgBlack.white)
+		console.log(`userEmailSeed`.bgMagenta)
 		return createdUsers
 	} catch (error) {
 		console.log(error.red)
@@ -44,44 +42,46 @@ const userThoughtSeed = async () => {
 }
 
 // assigning usernames to reactions
-const userReactionSeed = async () =>{
-	try {
-		const reactionsWithUsernames = assignUsernames()
-		console.log(`reactionsWithUsernames ln48 seed.js ${JSON.stringify(reactionsWithUsernames)}`.green)
-		const createdReactions = await Reaction.insertMany(reactionsWithUsernames)
-		console.log(`createdReactions ln49 seed.js ${createdReactions}`.blue)
-		console.log('userReactionSeeded'.bgBlack.white)
-		return createdReactions		
-	} catch (error) {
-		console.log(`error! ${error}`.red)
-	}
-}
+//* works if Reactions is a model, but only creates reactions, does not add to random thoughts. need to figure out how to replicate thoughtId without using it as a param
+// const userReactionSeed = async () =>{
+// 	try {
+// 		const reactionsWithUsernames = assignUsernames()
+// 		console.log(`reactionsWithUsernames ln48 seed.js ${JSON.stringify(reactionsWithUsernames)}`.green)
+		
+// 		const createdReactions = await Reaction.insertMany(reactionsWithUsernames)
+// 		console.log(`createdReactions ln49 seed.js ${createdReactions}`.blue)
+// 		console.log('userReactionSeeded'.bgBlack.white)
+// 		return createdReactions		
+// 	} catch (error) {
+// 		console.log(`error! ${error}`.red)
+// 	}
+// }
 
-const thoughtReactionSeed = async (createdReactions, seededThoughtArray) => {
-	try {
-		console.log(`createdReactions ${createdReactions}`.red)
-		const reactionIdArray = createdReactions.map(reaction => reaction._id)
-		console.log(`reactionIdArray ln 61: ${JSON.stringify(reactionIdArray)}`.cyan);
-		for(let i = 0; i < reactionIdArray.length; i++){
-			const randomThought = await Thought.findOne({
-				thoughtText: getRandom(seededThoughtArray).thoughtText
-			})
-			console.log(`randomThought ln65 seed.js ${randomThought}`.cyan)
-			randomThought.reactions.push(reactionIdArray[i])
-			randomThought.save()
-		}
-		console.log('reactions seeded to thoughts ln 85 seed.js'.bgYellow)
-	} catch (error) {
-		console.log(`${error}`.red)
-	}
-}
+// const thoughtReactionSeed = async (createdReactions, seededThoughtArray) => {
+// 	try {
+// 		console.log(`createdReactions ${createdReactions}`.red)
+// 		const reactionIdArray = createdReactions.map(reaction => reaction._id)
+// 		console.log(`reactionIdArray ln 61: ${JSON.stringify(reactionIdArray)}`.cyan);
+// 		for(let i = 0; i < reactionIdArray.length; i++){
+// 			const randomThought = await Thought.findOne({
+// 				thoughtText: getRandom(seededThoughtArray).thoughtText
+// 			})
+// 			console.log(`randomThought ln65 seed.js ${randomThought}`.cyan)
+// 			randomThought.reactions.push(reactionIdArray[i])
+// 			randomThought.save()
+// 		}
+// 		console.log('reactions seeded to thoughts ln 85 seed.js'.bgYellow)
+// 	} catch (error) {
+// 		console.log(`${error}`.red)
+// 	}
+// }
 
 async function seedFunction(){
 	
 	await userEmailSeed()
 	const seededThoughtArray = await userThoughtSeed()
-	const createdReactions = await userReactionSeed()
-	await thoughtReactionSeed(createdReactions, seededThoughtArray)
+	// const createdReactions = await userReactionSeed()
+	// await thoughtReactionSeed(createdReactions, seededThoughtArray)
 
 }
 

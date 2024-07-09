@@ -44,6 +44,11 @@ thoughtSchema.path('createdAt').get(function(value){
 	return value.toLocaleString()
 })
 
+// Really tried, maybe come back to it.
+// thoughtSchema.statics.deleteByUser = async function(username) {
+// 	return this.deleteMany({ username: username })
+// }
+
 const Thought = model('thought', thoughtSchema)
 
 module.exports = Thought

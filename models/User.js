@@ -1,8 +1,6 @@
 const { model, Schema} = require('mongoose')
 const validator = require('validator')
-
-
-
+const Thought = require('../models/Thought')
 
 const userSchema = new Schema(
 	{
@@ -39,7 +37,6 @@ const userSchema = new Schema(
 		]
 	},
 	{
-		// ?
 		toJSON: {
 			virtuals: true
 		},
@@ -54,16 +51,18 @@ const userSchema = new Schema(
 		}
 	}
 )
+// Really tried, maybe come back to it.
+// userSchema.pre('findByIdAndDelete', async function(doc, next){
+// 	try {
+// 		await Thought.deleteByUser(doc.username)
+// 		next()
+		
 
-userSchema.pre('remove', async function(next){
-	try {
-		await Thought.deleteMany({ _id: { $in: this.user } })
-		next()
-	} catch (error) {
-		console.log(`Error in deleting thoughts from user- ${error}`.red)
-		next(error)
-	}
-})
+// 	} catch (error) {
+// 		console.log(`Error in deleting thoughts from user- ${error}`.red)
+// 		next(error)
+// 	}
+// })
 
 const User = model('user', userSchema)
 

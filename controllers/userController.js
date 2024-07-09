@@ -111,13 +111,13 @@ module.exports = {
 		const userId = req.params.id
 
 		try {
-			const result = await User.findByIdAndDelete({ _id: userId})
-			if(!result){
+			const user = await User.findByIdAndDelete({ _id: userId})
+			if(!user){
 				console.log('User not found')
-				res.status(404).json({message:'User not found'})
-			}else{
-				res.status(204).json({message: 'user deleted successfully', result})
+				return res.status(404).json({message:'User not found'})
 			}
+			res.status(204).json({message: 'user deleted successfully', user})
+			
 		} catch (error) {
 			console.log(`Error! - ${error}`.red)
 			res.status(500).json(error)

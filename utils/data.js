@@ -1,8 +1,4 @@
-// todo clean up console.log
-
-
 const colors = require('colors')
-const Reaction = require('../models/index')
 
 
 const usernamesArray = [
@@ -203,7 +199,7 @@ const usernamesWithEmail = () =>{
 		email: emailsArray[index]
 		})	
 	)
-	console.log(`usermeailobject ln 204 ${JSON.stringify(userEmailObjects)}`.magenta)
+	// console.log(`usermeailobject ln 204 ${JSON.stringify(userEmailObjects)}`.magenta)
 	return userEmailObjects
 	
 }
@@ -216,32 +212,27 @@ const assignUserTothought = () => {
 		})	
 	)
 
-	console.log(`thoughtObject 217 data.js ${JSON.stringify(thoughtObjects)}`.cyan)
+	// console.log(`thoughtObject 217 data.js ${JSON.stringify(thoughtObjects)}`.cyan)
 	return thoughtObjects
 }
 
 
 // to assign a user to a reaction
-const assignUsernames = () => {
-	let assignedArray = []
-	reactionsArray.forEach(reaction =>{
-		const pairedObject = {
-			reactionBody: reaction,
-			username: getRandom(usernamesArray)
-		}
-		assignedArray.push(pairedObject)
+// not needed until figure out how to assign reactions to thoughts
+// const assignUsernames = () => {
+// 	let assignedArray = []
+// 	reactionsArray.forEach(reaction =>{
+// 		const pairedObject = {
+// 			reactionBody: reaction,
+// 			username: getRandom(usernamesArray)
+// 		}
+// 		assignedArray.push(pairedObject)
 
-	})
-	console.log(`data 232 assignedArray:${JSON.stringify(assignedArray)}`.yellow)
-	console.log(`reactions now have users`.bgBlue)
-	return assignedArray
-}
-
-
-module.exports = { usernamesWithEmail, assignUsernames, getRandom, assignUserTothought }
+// 	})
+// 	console.log(`data 232 assignedArray:${JSON.stringify(assignedArray)}`.yellow)
+// 	console.log(`reactions now have users`.bgBlue)
+// 	return assignedArray
+// }
 
 
-// username of thought cannot match username of reaction.--if we want to get technical. but i think it's ok for right now.
-		// if reaction.username !== thought.username{
-		// 	return, run again
-		// }
+module.exports = { usernamesWithEmail, getRandom, assignUserTothought }

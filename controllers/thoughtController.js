@@ -1,6 +1,6 @@
 const Thought = require('../models/Thought')
 const User = require('../models/User')
-const Reaction = require('../models/Reaction')
+// const Reaction = require('../models/Reaction')
 const {mongoose} = require('mongoose')
 
 module.exports = {
@@ -90,7 +90,8 @@ module.exports = {
 		const thoughtId = req.params.id
 
 		const thought = {
-			thoughtText: req.body.thoughtText
+			thoughtText: req.body.thoughtText,
+			username: req.body.username
 		}
 
 		try{
@@ -118,10 +119,11 @@ module.exports = {
 			const result = await Thought.findByIdAndDelete({ _id: thoughtId})
 			if(!result){
 				console.log('Thought not found')
-				res.status(404).json({message:'Thought not found'})
-			}else{
-				res.status(204).json({message: 'Thought deleted successfully', result})
+				return res.status(404).json({message:'Thought not found'})
 			}
+
+			return res.status(204).json({message: 'Thought deleted successfully'})
+
 		} catch (error) {
 			console.log(`Error! - ${error}`.red)
 			res.status(500).json(error)

@@ -31,7 +31,7 @@ Content-Type: application/json
 
 # delete a user by id
 # todo-remove thoughts associated with user
-DELETE  http://localhost:3001/api/users/668a88517cfb0ee986ac45e1
+DELETE  http://localhost:3001/api/users/668db65f8da69496a9aa7659
 ###
 
 
@@ -42,7 +42,6 @@ POST http://localhost:3001/api/users/668a88517cfb0ee986ac45e2/friends/668a88517c
 ###
 
 # remove a friend
-# todo
 DELETE http://localhost:3001/api/users/668a88517cfb0ee986ac45e2/friends/668a88517cfb0ee986ac45e3
 ###
 
@@ -108,6 +107,3 @@ Content-Type: application/json
 
 ### 
 
-# ?
-
-# 3 delete

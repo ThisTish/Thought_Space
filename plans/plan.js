@@ -29,11 +29,11 @@
 		// // Get thought by _id
 		// // Post create new Thought
 			// // push the created thought's _id to the associated user's "thoughts" array field
-		// todo Put update thought by _id
-		// todo Delete to remove thought by _id
+		// // Put update thought by _id
+		// // Delete to remove thought by _id
 	// *api/thoughts/:thoughtId/reactions
 		// // Post create reation stored in a single thought's "reactions" array field
-		// todo Delete pull and remove a reaction by the reaction's _id
+		// // Delete pull and remove a reaction by the reaction's _id
 
 // !WHEN I test API POST, PUT, and DELETE routes in Insomnia
 // !THEN I am able to successfully create, update, and delete users and thoughts in my database

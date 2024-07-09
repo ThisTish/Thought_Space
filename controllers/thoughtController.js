@@ -1,5 +1,7 @@
 const Thought = require('../models/Thought')
 const User = require('../models/User')
+const Reaction = require('../models/Reaction')
+const {mongoose} = require('mongoose')
 
 module.exports = {
 
@@ -103,6 +105,47 @@ module.exports = {
 				res.status(404).json({message: 'Thought not found'})
 			}
 				res.status(201).json(updatedThought)
+		} catch (error) {
+			console.log(`Error! - ${error}`.red)
+			res.status(500).json(error)
+		}
+	},
+
+	async deleteThought(req, res){
+		const thoughtId = req.params.id
+
+		try {
+			const result = await Thought.findByIdAndDelete({ _id: thoughtId})
+			if(!result){
+				console.log('Thought not found')
+				res.status(404).json({message:'Thought not found'})
+			}else{
+				res.status(204).json({message: 'Thought deleted successfully', result})
+			}
+		} catch (error) {
+			console.log(`Error! - ${error}`.red)
+			res.status(500).json(error)
+		}
+	},
+
+	async removeReaction(req, res){
+		const thoughtId = req.params.thoughtId
+		const reactionId = req.body.reactionId
+
+		try {
+			
+			const updatedThought = await Thought.findOneAndUpdate(
+				{ _id: thoughtId },
+				{ $pull: {reactions: {_id: reactionId }}},
+				{ runValidators: true, new: true }
+			)
+
+			if(!updatedThought){
+				return res.status(404).json({message: 'thought not found'})
+			}
+
+			res.status(200).json({message:'reaction removed', updatedThought: updatedThought})
+			
 		} catch (error) {
 			console.log(`Error! - ${error}`.red)
 			res.status(500).json(error)

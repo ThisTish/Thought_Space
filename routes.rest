@@ -6,7 +6,7 @@ GET http://localhost:3001/api/users
 ###
 
 # get user by id
-GET http://localhost:3001/api/users/668a88517cfb0ee986ac45e0
+GET http://localhost:3001/api/users/668a88517cfb0ee986ac45e2
 ###
 
 # add a new user
@@ -30,9 +30,11 @@ Content-Type: application/json
 ###
 
 # delete a user by id
-# todo
-DELETE  http://localhost:3001/api/users/:id
+# todo-remove thoughts associated with user
+DELETE  http://localhost:3001/api/users/668a88517cfb0ee986ac45e1
 ###
+
+
 
 # */API/USERS/USERiD/FRIENDS/FRIENDiD
 # add a friend
@@ -41,8 +43,9 @@ POST http://localhost:3001/api/users/668a88517cfb0ee986ac45e2/friends/668a88517c
 
 # remove a friend
 # todo
-DELETE http://localhost/3001/api/users/:userId/friends/:friendId
+DELETE http://localhost:3001/api/users/668a88517cfb0ee986ac45e2/friends/668a88517cfb0ee986ac45e3
 ###
+
 
 
 # */API/THOUGHTS
@@ -50,7 +53,7 @@ DELETE http://localhost/3001/api/users/:userId/friends/:friendId
 GET http://localhost:3001/api/thoughts
 ###
 
-# geth thought by id
+# get thought by id
 GET http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4614
 ###
 
@@ -59,14 +62,13 @@ POST  http://localhost:3001/api/thoughts
 Content-Type: application/json
 
 {
-	"thoughtText": "shhhhh's ...",
-	"username": "tishthegoat"
+	"thoughtText": "thinking about you's ...",
+	"username": "CrookedColours"
 }
 
 ###
 
 # update a thought by id
-# todo
 PUT http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4618
 Content-Type: application/json
 
@@ -76,29 +78,36 @@ Content-Type: application/json
 ###
 
 # delete a thought
-# todo
-DELETE  http://localhost:3001/api/thoughts/:id
+DELETE  http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4614
+
 ###
+
+
 
 
 # */API/THOUGHTS/:THOUGHTiD/REACTIONS
 # create a reaction stored in a single thought's 'reactions' array field
-POST http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4617/reactions
+POST http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4614/reactions
 Content-Type: application/json
 
 {
 
-	"reactionBody": "cut the crap",
+	"reactionBody": "gooey",
 	"userName": "GlassAnimals"
 }
+
 ### 
 
 # pull and remove a reaction by reactionId
-# todo
-DELETE HTTP/1.1 http://localhost:/3001/api/thoughts/:thoughtId/reactions
+DELETE http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4614/reactions
+Content-Type: application/json
+
+{
+	"reactionId": "668c7fc419fbd97ecd832d32"
+}
+
 ### 
 
 # ?
-# 1 post
-# 2 put
+
 # 3 delete

@@ -55,6 +55,16 @@ const userSchema = new Schema(
 	}
 )
 
+userSchema.pre('remove', async function(next){
+	try {
+		await Thought.deleteMany({ _id: { $in: this.user } })
+		next()
+	} catch (error) {
+		console.log(`Error in deleting thoughts from user- ${error}`.red)
+		next(error)
+	}
+})
+
 const User = model('user', userSchema)
 
 module.exports = User

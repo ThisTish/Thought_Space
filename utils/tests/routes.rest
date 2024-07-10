@@ -30,7 +30,6 @@ Content-Type: application/json
 ###
 
 # delete a user by id
-# todo-remove thoughts associated with user
 DELETE  http://localhost:3001/api/users/668db65f8da69496a9aa7659
 ###
 
@@ -78,9 +77,7 @@ Content-Type: application/json
 
 # delete a thought
 DELETE  http://localhost:3001/api/thoughts/668a88517cfb0ee986ac4614
-
 ###
-
 
 
 

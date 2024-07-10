@@ -1,5 +1,5 @@
 # **Thought_Space**
-
+<!-- todo add video demo -->
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -27,9 +27,11 @@ Install all dependencies with `npm i` in your terminal.
 
 Start the server by using the command `npm start` in your terminal.
 
-Use Insomnia, Postman or another API testing tool. Testing files are provided in the test file for REST Client(VSCode extension) and for Insomnia.
+Use Insomnia, Postman or another API testing tool. Testing files are provided in the utils/tests folder for REST Client(VSCode extension) and for Insomnia.
 
 Route functions provide information to Get all, Get by id, Post, Put and Delete for Users & Thoughts. There are also routes to Add and Delete Reactions on thoughts, and Friends for users' friends list.
+
+[Video Demo](https://drive.google.com/file/d/1pEMhUk3gQhOwARHLw6WvPkblQPZhIZ5T/view)
 
 ## 🌐 Contributing <a id="contributing"></a>
 
@@ -38,8 +40,11 @@ Contact through the email provided below.
 
 ## 🧪 Tests <a id="tests"></a>
 
+### Found in utilites folder:
 
-Insomnia & REST Client VSCode extension to test all routes.
+Insomnia & REST Client files to test all routes.
+
+Seed functions are also provided for Users with Emails and Thoughts. Use `npm run seed` to utilize this.
 
 ## ✋ Questions <a id="questions"></a>
 

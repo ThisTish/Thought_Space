@@ -106,17 +106,20 @@ module.exports = {
 		}
 	},
 
-	// todo remove thoughts by user-bonus-trying to do as hook in model
 	async deleteUser(req, res){
 		const userId = req.params.id
 
 		try {
-			const user = await User.findByIdAndDelete({ _id: userId})
-			if(!user){
+			const foundUser = await User.findById({ _id: userId })
+			if(!foundUser){
 				console.log('User not found')
 				return res.status(404).json({message:'User not found'})
 			}
-			res.status(204).json({message: 'user deleted successfully', user})
+
+			await foundUser.deleteOne()
+
+			console.log('user deleted successfully')
+			res.status(204)
 			
 		} catch (error) {
 			console.log(`Error! - ${error}`.red)
@@ -124,7 +127,6 @@ module.exports = {
 		}
 	},
 
-	// DELETE http://localhost/3001/api/users/:userId/friends/:friendId
 	async removeFriend(req, res){
 		const userId = req.params.userId
 		const friendId = req.params.friendId
@@ -151,8 +153,5 @@ module.exports = {
 				res.status(404).json({ message: `friend coulnd't be removed`, error: error})
 			}
 		}
-
-
-
 
 }

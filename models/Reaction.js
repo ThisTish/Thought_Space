@@ -4,7 +4,6 @@ const reactionSchema = new Schema(
 	{
 		reactionId: {
 			type: Schema.Types.ObjectId,
-			// default: () => new Types.ObjectId()
 		},
 		reactionBody: {
 			type: String,
@@ -37,6 +36,5 @@ reactionSchema.path('createdAt').get(function(value){
 	return value.toLocaleString()
 })
 
-// const Reaction = model('reaction', reactionSchema)
 
 module.exports = reactionSchema

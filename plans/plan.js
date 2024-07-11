@@ -19,11 +19,11 @@
 		// // Get by id
 		// // Post new user
 		// // Put update user by _id
-		// todo Delete remove user by _id
-			// ?bonus: remove user's associated thoughts when deleted
+		// // Delete remove user by _id
+			// ?//: remove user's associated thoughts when deleted
 	// *api/users/:userId/friends/:friendId
 		// // Post to add a friend
-		// todo Delete to remove from friend's list
+		// // // to remove from friend's list
 	// *api/thoughts
 		// // Get all thoughts
 		// // Get thought by _id
@@ -37,9 +37,9 @@
 
 // !WHEN I test API POST, PUT, and DELETE routes in Insomnia
 // !THEN I am able to successfully create, update, and delete users and thoughts in my database
-	// todo create all controller functions for users and thoughts mentioned above
-	// todo create collection to test all in insomnia
+	// // create all controller functions for users and thoughts mentioned above
+	// // create collection to test all in insomnia
 // !WHEN I test API POST and DELETE routes in Insomnia
 // !THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-	// todo create all controller functions for reactions and friends(virtuals?)
-	// todo add to collection in insomonia
+	// // create all controller functions for reactions and friends(virtuals?)
+	// // add to collection in insomonia

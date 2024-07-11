@@ -16,7 +16,7 @@ const userSchema = new Schema(
 			lowercase: true,
 			required: true,
 			unique: true,
-			validate:{//need to test this, if problems, try isAsync: true or use RegEx in a function
+			validate:{
 				validator: validator.isEmail,
 				message: props=> `${props.value} is not a valid email`
 			}
@@ -51,18 +51,15 @@ const userSchema = new Schema(
 		}
 	}
 )
-// Really tried, maybe come back to it.
-// userSchema.pre('findByIdAndDelete', async function(doc, next){
-// 	try {
-// 		await Thought.deleteByUser(doc.username)
-// 		next()
-		
+userSchema.pre('deleteOne', { document: true, query: false }, async function(){
+	try {
+		const thoughts = await Thought.findByUserName(this.username)
+		await Thought.deleteMany({ _id: {$in: thoughts.map(thought => thought._id) } } )
 
-// 	} catch (error) {
-// 		console.log(`Error in deleting thoughts from user- ${error}`.red)
-// 		next(error)
-// 	}
-// })
+	} catch (error) {
+		console.log(`Error in deleting thoughts from user- ${error}`.red)
+	}
+})
 
 const User = model('user', userSchema)
 

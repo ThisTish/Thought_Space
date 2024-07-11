@@ -29,7 +29,7 @@ const userEmailSeed = async () =>{
 	}
 }
 	
-// assinging usernames to thoughts
+// assinging usernames to thoughts(does not push thought to user's array-work to do)
 const userThoughtSeed = async () => {
 	try {
 		const userThoughtArray = assignUserTothought()
